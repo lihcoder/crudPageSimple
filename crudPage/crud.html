@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD</title>
+  <link rel="stylesheet" href="crud.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <span>Cadastro de Produtos</span>
+      <button onclick="openModal()" id="new">Novo Item</i></button>
+    </div>
+
+    <div class="divTable">
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Marca</th>
+            <th>Quantidade</th>
+            <th class="acao">Editar</th>
+            <th class="acao">Excluir</th>
+          </tr>
+        </thead>
+        <tbody id="itemsTable">
+        </tbody>
+      </table>
+    </div>
+
+    
+    <div class="modal-container">
+      <div class="modal">
+        <form id="modalForm" autocomplete="off">
+          <legend class="list">Listando Itens</legend>
+          <label for="m-model">Modelo:</label>
+          <input id="m-model" type="text" required />
+  
+          <label for="m-marca">Marca:</label>
+          <input id="m-marca" type="text" required />
+          
+          <label for="m-qtd">Quantidade:</label>
+          <input id="m-qtd" type="number" required />
+          
+          <br>
+          
+          <div class="flex-container">
+            <div class="flex-item">
+                <label for="m-condi">Condição:</label> 
+                <span>Novo</span>
+                <input type="radio" name="m-condi" value="new" required>
+            </div>
+            
+            <div class="flex-item">
+                <label for="m-condi"></label>
+                <span>Usado</span>
+                <input type="radio" name="m-condi" value="used" required>
+            </div>
+          </div>
+        
+          <br>
+          
+          <div>
+            <div class="checkbox-container">
+              <div>
+                <label>Diferenciais:</label>
+                <label for="fullhd-check">Full HD</label>
+                <input type="checkbox" id="fullhd-check" name="d-difere" value="fullhd" required>
+              </div>
+
+              <div>
+                <label>Edição Limitada</label>
+                <input type="checkbox" name="d-difere" value="fulledition" required>
+              </div>
+
+              <div>
+                <label>Internacional</label>
+                <input type="checkbox" name="d-difere" value="prodinter" required>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          
+          <div id="select-container">
+            <label for="m-tipo">Tipo:
+            <select name="m-tipo" required id="m-tipo">
+                <option value="" selected disabled>Selecione opção</option>
+                <option value="eletro">Eletro</option>
+                <option value="mob">Mobília</option>
+                <option value="perece">Perecível</option>
+            </select>
+          </div>
+          
+
+          <br><br>
+          
+          <div>
+            <button id="btnSalvar">Cadastrar</button>
+
+            <input type="reset" value="Limpar" id="btnLimpar">
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="delete-modal-container">
+      <div class="modal" id="deleteModal">
+        <form autocomplete="off">
+          <div class="modal-content">
+            <div class="modal-header">
+                <div class="swal2-icon swal2-warning swal2-icon-show">
+                    <div class="swal2-icon-content">!</div>
+                </div>
+            </div>
+            <h2 class="swal2-title" id="swal2-title">Atenção!</h2>
+            <div class="modal-body">
+              <p id="alert-message">Esta ação irá excluir a consulta selecionada. Tem certeza de que deseja exclui-la?
+              </p>
+              <div id="excludeOptions">
+                  <button class="btn btn-primary" id="cancelButton" name="cancel" type="button" value="Cancelar" onclick="closeModal()"> Cancelar</button>
+                  <button class="btn btn-danger" id="excludeButton" name="exclude" type="button" value="Excluir"> Excluir</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
